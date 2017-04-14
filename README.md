@@ -72,6 +72,10 @@ Skip download models:
 
     ansible-playbook -i inventory playbook-caffe.yml --skip-tags "model"
 
+Only download models:
+
+    ansible-playbook -i inventory playbook-caffe.yml --tags "src,model"
+
 License
 -------
 
