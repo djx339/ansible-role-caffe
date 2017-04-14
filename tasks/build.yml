@@ -28,5 +28,6 @@
   shell: make matcaffe
   args:
     chdir: "{{ caffe_root }}"
+  when: not caffe_matlab_dir is none
   tags:
     - install
