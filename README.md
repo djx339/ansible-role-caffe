@@ -1,7 +1,7 @@
-Ansible Role: [Caffe](http://caffe.berkeleyvision.org/)
+Ansible Role: Caffe
 =========
 
-Ansible Role for [Caffe](http://caffe.berkeleyvision.org/), a deep learning framework by the BVLC, on Ubuntu.
+Install [Caffe](http://caffe.berkeleyvision.org/), a deep learning framework by the BVLC, on Ubuntu.
 
 Requirements
 ------------
