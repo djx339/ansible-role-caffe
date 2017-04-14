@@ -29,7 +29,7 @@ Role Variables
 
 `caffe_blas`: The BLAS choice. `atlas` for ATLAS, `mkl` for MKL, `open` for OpenBlas. (default: atlas)
 
-`caffe_matlab_dir`: The MATLAB dir.
+`caffe_matlab_dir`: The MATLAB dir. (default: "")
 
 `caffe_with_python_layer`: Building caffe with python layer. (default: True)
 
