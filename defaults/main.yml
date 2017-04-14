@@ -1,0 +1,16 @@
+---
+# defaults file for caffe
+caffe_repo: https://github.com/BVLC/caffe.git
+caffe_root: /opt/caffe
+caffe_version: HEAD
+
+caffe_with_virtualenv: True
+caffe_virtualenv: "/opt/pyenv/caffe"
+
+caffe_use_cudnn: False
+caffe_cpu_only: False
+caffe_opencv_versioin: 3
+caffe_blas: atlas
+caffe_matlab_dir:
+caffe_with_python_layer: True
+caffe_use_pkg_config: False

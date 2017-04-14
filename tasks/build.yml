@@ -1,0 +1,32 @@
+---
+- name: Configure compile optioins
+  template: "src=Makefile.config.j2 dest={{ caffe_root }}/Makefile.config"
+  tags:
+    - configure
+    - install
+
+- name: Include python requirements
+  include: python-requirements.yml
+  tags:
+    - install
+
+- name: Building Caffe
+  shell: "make -j {{ ansible_processor_vcpus }}"
+  args:
+    chdir: "{{ caffe_root }}"
+  tags:
+    - install
+
+- name: Building pycaffe
+  shell: make pycaffe
+  args:
+    chdir: "{{ caffe_root }}"
+  tags:
+    - install
+
+- name: Building matcaffe
+  shell: make matcaffe
+  args:
+    chdir: "{{ caffe_root }}"
+  tags:
+    - install

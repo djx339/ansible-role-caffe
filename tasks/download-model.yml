@@ -1,0 +1,28 @@
+---
+- name: get trained models BVLC Reference CaffeNet
+  shell: >
+    ./scripts/download_model_binary.py models/bvlc_reference_caffenet
+  args:
+    chdir: "{{ caffe_root }}"
+    creates: "{{ caffe_root }}/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel"
+
+- name: get trained models BVLC AlexNet
+  shell: >
+    ./scripts/download_model_binary.py models/bvlc_alexnet
+  args:
+    chdir: "{{ caffe_root }}"
+    creates: "{{ caffe_root }}/models/bvlc_alexnet/bvlc_alexnet.caffemodel"
+
+- name: get trained models BVLC Reference R-CNN ILSVRC-2013
+  shell: >
+    ./scripts/download_model_binary.py models/bvlc_reference_rcnn_ilsvrc13
+  args:
+    chdir: "{{ caffe_root }}"
+    creates: "{{ caffe_root }}/models/bvlc_reference_rcnn_ilsvrc13/bvlc_reference_rcnn_ilsvrc13.caffemodel"
+
+- name: get trained models BVLC GoogLeNet
+  shell: >
+    ./scripts/download_model_binary.py  models/bvlc_googlenet
+  args:
+    chdir: "{{ caffe_root }}"
+    creates: "{{ caffe_root }}/models/bvlc_googlenet/bvlc_googlenet.caffemodel"

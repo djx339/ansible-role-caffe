@@ -1,0 +1,22 @@
+---
+- name: Installing dependence
+  apt: "name={{ item }} update_cache=yes cache_valid_time=36000 state=present"
+  with_items: "{{ caffe_deps }}"
+  tags:
+    - dep
+    - install
+
+- name: Download source code
+  git: "repo={{ caffe_repo }} dest={{ caffe_root }} version={{ caffe_version }}"
+  tags:
+    - src
+    - install
+    - model
+
+- name: Building caffe
+  include: build.yml
+
+- name: Download model
+  include: download-model.yml
+  tags:
+    - model
