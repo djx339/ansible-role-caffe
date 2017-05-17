@@ -13,7 +13,7 @@ galaxy_info:
         - all
         - trusty
         - xenial
-    - name: CentOS
+    - name: EL
       versions:
         - all
     
