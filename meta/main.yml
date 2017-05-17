@@ -22,6 +22,6 @@ galaxy_info:
     - cudnn
     - nvidia
     - caffe
-    - deep learning
+    - deep_learning
 
 dependencies: []
