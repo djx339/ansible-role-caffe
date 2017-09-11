@@ -1,29 +1,63 @@
----
 language: python
-python: "2.7"
+services: docker
 
-# Use the new container infrastructure
-sudo: false
+env:
+  - distribution: Ubuntu
+    distribution_version: yakkety
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: Ubuntu
+    distribution_version: xenial
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: Ubuntu
+    distribution_version: trusty
+    init: /sbin/init
+    run_opts: ""
+  - distribution: Ubuntu
+    distribution_version: precise
+    init: /sbin/init
+    run_opts: ""
+  - distribution: EL
+    distribution_version: "7"
+    init: /usr/lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: EL
+    distribution_version: "6"
+    init: /sbin/init
+    run_opts: ""
+  - distribution: Debian
+    distribution_version: jessie
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: Debian
+    distribution_version: wheezy
+    init: /sbin/init
+    run_opts: ""
 
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python-pip
-
-install:
-  # Install ansible
-  - pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+before_install:
+  # Pull container from Docker Hub.
+  - 'docker pull ansiblecheck/ansiblecheck:${distribution,,}-${distribution_version}'
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - container_id=$(mktemp)
+  # Start The Built Container In The Background
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  # Ansible syntax check.
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
+
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
+
+  # Test Idempotence
+  - idempotence=$(mktemp)
+  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml | tee -a ${idempotence}
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+# notifications:
+#   webhooks: https://galaxy.ansible.com/api/v1/notifications/
