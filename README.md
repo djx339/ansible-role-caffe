@@ -25,9 +25,9 @@ Role Variables
 
 `caffe_use_cudnn`: Building Caffe with cudnn. (default: False)
 
-`caffe_cpu_only`: Building Caffe only support CPU. (default: False)
+`caffe_cpu_only`: Building Caffe only support CPU. (default: True)
 
-`caffe_opencv_versioin`: The OpenCV version. (default: 3)
+`caffe_opencv_versioin`: The OpenCV version. (default: 2)
 
 `caffe_blas`: The BLAS choice. `atlas` for ATLAS, `mkl` for MKL, `open` for OpenBlas. (default: atlas)
 
@@ -35,7 +35,7 @@ Role Variables
 
 `caffe_with_python_layer`: Building caffe with python layer. (default: True)
 
-`caffe_use_pkg_config`: Using `pkg-config` to specify OpenCV library paths. (default: False)
+`caffe_use_pkg_config`: Using `pkg-config` to specify OpenCV library paths. (default: True)
 
 Dependencies
 ------------

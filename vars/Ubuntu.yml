@@ -1,22 +1,23 @@
 ---
 caffe_deps:
-  - git
-  - wget
   - bc
   - cmake
-  - libprotobuf-dev
-  - libleveldb-dev
-  - libsnappy-dev
-  - libopencv-dev
-  - libhdf5-serial-dev
-  - protobuf-compiler
-  - libboost-all-dev
+  - gfortran
+  - git
   - libatlas-base-dev
-  - libopenblas-dev
+  - libboost-all-dev
   - libgflags-dev
   - libgoogle-glog-dev
+  - libhdf5-serial-dev
+  - libleveldb-dev
   - liblmdb-dev
+  - libopenblas-dev
+  - libopencv-dev
+  - libprotobuf-dev
+  - libsnappy-dev
+  - pkg-config
+  - protobuf-compiler
   - python-dev
-  - python-pip
   - python-numpy
-  - gfortran
+  - python-pip
+  - wget
