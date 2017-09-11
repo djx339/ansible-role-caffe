@@ -1,4 +1,7 @@
 ---
+- name: Install virtualenv
+  pip: "name=virtualenv"
+
 - name: Install python deps with virtualenv
   pip: "requirements={{ caffe_root }}/python/requirements.txt virtualenv={{ caffe_virtualenv }}"
   when: caffe_with_virtualenv
