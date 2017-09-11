@@ -1,6 +1,8 @@
 Ansible Role: Caffe
 =========
 
+[![Build Status](https://travis-ci.org/djx339/ansible-role-caffe.svg?branch=master)](https://travis-ci.org/djx339/ansible-role-caffe)
+
 Install [Caffe](http://caffe.berkeleyvision.org/), a deep learning framework by the BVLC, on Ubuntu.
 
 Requirements
