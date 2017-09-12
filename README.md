@@ -42,19 +42,6 @@ Dependencies
 
 None.
 
-Installing
-----------
-
-This role is only avaiable on github. You can install it by create a `roles.yml` file and install it by `ansible-galaxy install -r roles.yml`
-
-The jq role section of the content of the roles.yml
-
-```yaml
-# caffe
-- src: https://github.com/djx339/ansible-role-caffe
-  name: caffe
-```
-
 Example Playbook
 ----------------
 
@@ -63,7 +50,7 @@ Example Playbook
   become: yes
 
   roles:
-    - { role: caffe }
+    - { role: djx339.ansible-role-cuda }
 ```
 
 Only install dependence:
