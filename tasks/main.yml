@@ -10,3 +10,6 @@
 # eg: tasks/setup-Ubuntu.yml
 - include: "setup-{{ ansible_distribution }}.yml"
   static: no
+
+- include: "caffe.yml"
+  static: no

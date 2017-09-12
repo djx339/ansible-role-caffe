@@ -1,0 +1,10 @@
+---
+- name: Installing dependence
+  yum: "name={{ item }} state=present"
+  with_items: "{{ caffe_deps }}"
+  tags:
+    - dep
+    - install
+
+- name: Installing pip
+  easy_install: "name=pip state=latest"

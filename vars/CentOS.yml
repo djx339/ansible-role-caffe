@@ -1,0 +1,18 @@
+---
+caffe_deps:
+  - @Development tools
+  - atlas-devel
+  - bc
+  - boost-devel
+  - cmake
+  - gflags-devel
+  - git
+  - glog-devel
+  - hdf5-devel
+  - leveldb-devel
+  - lmdb-devel
+  - opencv-devel
+  - protobuf-devel
+  - python-devel
+  - snappy-devel
+  - wget
