@@ -1,6 +1,6 @@
 ---
 caffe_deps:
-  - @Development tools
+  - "@Development tools"
   - atlas-devel
   - bc
   - boost-devel
